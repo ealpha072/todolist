@@ -16,7 +16,8 @@ function addToDo(item){
             completed:false
         }
         todos.push(todo)
-        render(todos)
+        //render(todos)
+        savelocalStorage(todos)
     }
 }
 
@@ -34,6 +35,24 @@ function render(todos){
         list.append(li);
     });
 }
+
+function savelocalStorage(todos){
+    localStorage.setItem('todos',JSON.stringify(todos));
+    //to use local storage, we need a key and value. We name our key to do
+    //our value is the array itself..
+    //json.stringify converts our array to a string
+    render(todos);
+}
+
+function getFromStore(){
+    let data = localStorage.getItem('todos');
+
+    if(data){todos = JSON.parse(data)
+        render(todos)
+    };
+}
+
+getFromStore();
 
 form.addEventListener('click',(e)=>{
     e.preventDefault();
