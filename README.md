@@ -1,2 +1,5 @@
-# todolist
-A simple to do list that keeps track of to do items and supports features such as delete.
+# https://ealpha072.github.io/todolist/
+## A simple to do app
+
+## To do:
+* Add delete capabilities..
