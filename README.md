@@ -3,3 +3,5 @@
 
 ## To do:
 * Add delete capabilities..
+* Save to do to local storage..
+* Retrieve to do from local storage...
