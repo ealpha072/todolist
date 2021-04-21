@@ -1,4 +1,5 @@
 ##  To-Do App
+A to do app created with html and JS to help users manage their to-dos
 
 ## To do:
 * Add delete capabilities..
