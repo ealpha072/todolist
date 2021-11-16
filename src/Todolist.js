@@ -8,8 +8,10 @@ const Todolist = (props) => {
                 <h6>Todo List</h6>
             </div>
             <div className={"card-body"}>
-                <ul>
-                    <TodoItem todos={props.todos}/>
+                <ul className={"list-group"}>
+                    {props.todos.map(todo=>(
+                        <TodoItem key={todo.id} todos={todo} onChangeStatus={props.onChangeStatus}/>
+                    ))}
                 </ul>
             </div>
         </div>

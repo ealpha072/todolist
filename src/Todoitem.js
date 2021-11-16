@@ -1,9 +1,12 @@
 import React from 'react'
 
 const TodoItem = (props) => {
-    //const {title, complete} = props.todos
+    const {id, title, completed} = props.todos
+
     return (
-        <li>{props.todos.title}</li>
+        <li className={"list-group-item"}>
+            <input type="checkbox" checked={completed} onChange={() => props.onChangeStatus(id)}/> {title}
+        </li>
     )
 }
 
