@@ -5,10 +5,12 @@ import React, {useState} from 'react'
 
 function Todolist({todo, index, completeTodo, deleteTodo}){
     return (
-           <div className={"card-header d-flex flex-row"} style={{marginBottom:"10px", borderRadius:"5px"}}>
-                <div className={""} style={{textDecoration: todo.isCompleted? "line-through":" "}}>{todo.text}</div>
-                <div className={"float-right"}> 
-                    <button className={"btn btn-sm btn-primary"} onClick={()=>completeTodo(index)}>Complete</button> 
+           <div id="todoitem" className={"card-header row flex-wrap bg-light"} style={{margin:"10px 10px", borderRadius:"10px"}}>
+                <div className={"col"} style={{textDecoration: todo.isCompleted? "line-through":" "}}>
+                    <h5>{todo.text}</h5>
+                </div>
+                <div className={"col"} > 
+                    <button className={"btn btn-sm btn-success"} onClick={()=>completeTodo(index)}>Complete</button> 
                     <button className={"btn btn-sm btn-danger ml-2"} onClick={()=>deleteTodo(index)}>Del</button>
                 </div>
            </div>
@@ -75,7 +77,7 @@ const Cardbody  = () => {
                 <div className={"card-header"}>
                     <h6>Todo List</h6>
                 </div>
-                <div className={"card-body"}>
+                <div className={"card-body bg-secondary"}>
                     {todos.map((todo, index)=>(
                         <Todolist todo={todo} key={index} index={index} completeTodo={completeTodo} deleteTodo={deleteTodo}/>
                     ))}
