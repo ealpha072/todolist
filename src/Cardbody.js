@@ -3,13 +3,13 @@ import React, {useState} from 'react'
 //import CreateTodo from './CreateTodo'
 //import Todolist from './Todolist'
 
-function Todolist({todo, index, completeTodo}){
+function Todolist({todo, index, completeTodo, deleteTodo}){
     return (
            <div className={"card-header d-flex flex-row"} style={{marginBottom:"10px", borderRadius:"5px"}}>
                 <div className={""} style={{textDecoration: todo.isCompleted? "line-through":" "}}>{todo.text}</div>
                 <div className={"float-right"}> 
                     <button className={"btn btn-sm btn-primary"} onClick={()=>completeTodo(index)}>Complete</button> 
-                    <button className={"btn btn-sm btn-primary"} ></button>
+                    <button className={"btn btn-sm btn-danger ml-2"} onClick={()=>deleteTodo(index)}>Del</button>
                 </div>
            </div>
     )
@@ -62,6 +62,12 @@ const Cardbody  = () => {
         setTodos(newTodos)
     }
 
+    const deleteTodo = index=>{
+        const newTodos = [...todos]
+        newTodos.splice(index, 1)
+        setTodos(newTodos)
+    }
+
     return(
         <>
             <TodoForm addTodo={addTodo}/>
@@ -71,7 +77,7 @@ const Cardbody  = () => {
                 </div>
                 <div className={"card-body"}>
                     {todos.map((todo, index)=>(
-                        <Todolist todo={todo} key={index} index={index} completeTodo={completeTodo}/>
+                        <Todolist todo={todo} key={index} index={index} completeTodo={completeTodo} deleteTodo={deleteTodo}/>
                     ))}
                 </div>
             </div>
