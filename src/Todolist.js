@@ -9,8 +9,12 @@ const Todolist = (props) => {
             </div>
             <div className={"card-body"}>
                 <ul className={"list-group"}>
-                    {props.todoProp.map(item=>(
-                        <Listitem key={item.id} itemProp={item} itemCompletedChangeProp={props.handleCompletedChangeProp}/>
+                    {props.todoProp.map((item) =>(
+                        <Listitem 
+                            key={item.id} 
+                            itemProp={item} 
+                            itemCompletedChangeProp={props.handleCompletedChangeProp}
+                        />
                     ))}
                 </ul>
             </div>
