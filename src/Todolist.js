@@ -1,5 +1,5 @@
 import React from 'react'
-import TodoItem from './Todoitem'
+import Listitem from './Todoitem'
 
 const Todolist = (props) => {
     return (
@@ -9,13 +9,15 @@ const Todolist = (props) => {
             </div>
             <div className={"card-body"}>
                 <ul className={"list-group"}>
-                    {props.todos.map(todo=>(
-                        <TodoItem key={todo.id} todos={todo} onChangeStatus={props.onChangeStatus}/>
+                    {props.todoProp.map(item=>(
+                        <Listitem key={item.id} itemProp={item} itemCompletedChangeProp={props.handleCompletedChangeProp}/>
                     ))}
                 </ul>
             </div>
         </div>
     )
 }
+
+
 
 export default Todolist
