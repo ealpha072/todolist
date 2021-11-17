@@ -56,11 +56,11 @@ function TodoForm({addTodo}){
             <div className={"col-lg-12 col-md-12 col-sm-12 col-sm-12"}>
                 <form onSubmit={handleSubmit}>
                     <div className={"form-group row"}>
-                        <div className={"col-sm-6"}>
+                        <div className={"col"}>
                             <input type="text" className={"form-control"} placeholder="Add Todo..." required value={inputText} onChange={(e)=>setInputText(e.target.value)} autoFocus />
                         </div>
-                        <div className={"col-3"}>
-                            <button className={"btn btn-primary"}>+ Add</button>
+                        <div className={"col"}>
+                            <button className={"btn btn-primary btn-sm"}>+ Add</button>
                         </div>
                     </div>
                 </form>
