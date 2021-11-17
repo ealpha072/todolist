@@ -99,12 +99,37 @@ const Cardbody  = () => {
         setTodos(newTodos)
     }
 
+    const completeItems =  ()=>{
+        const newTodos = []
+        todos.forEach(item=>{
+           if(item.isCompleted === true){
+               newTodos.push(item)
+           }
+        })
+        setTodos(newTodos)
+    }
+
+    const incompleteItems = () => {
+        const newTodos = []
+        todos.forEach(item=>{
+           if(item.isCompleted === false){
+               newTodos.push(item)
+           }
+        })
+        setTodos(newTodos)
+    }
+
     return(
         <>
             <TodoForm addTodo={addTodo}/>
             <div className={"card"}>
                 <div className={"card-header"}>
                     <h6>Todo List</h6>
+                    <div className={"btn-group btn-group-sm"} role="group">
+                        <button className={"btn btn-primary"} >All</button>
+                        <button className={"btn btn-primary"} onClick={()=>completeItems()}>Complete</button>
+                        <button className={"btn btn-primary"} onClick={()=>incompleteItems()}>Incomplete</button>
+                    </div>
                 </div>
                 <div className={"card-body bg-secondary"}>
                     {todos.map((todo, index)=>(
