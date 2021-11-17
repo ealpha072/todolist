@@ -1,8 +1,5 @@
 import React, {useState} from 'react'
 
-//import CreateTodo from './CreateTodo'
-//import Todolist from './Todolist'
-
 function Todolist({todo, index, completeTodo, deleteTodo, editTodo}){
     const [editing, setEditing] = useState(false)
 
