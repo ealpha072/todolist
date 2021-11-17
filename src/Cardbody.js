@@ -8,6 +8,11 @@ function Todolist({todo, index, completeTodo, deleteTodo, editTodo}){
 
     let editMode = {display:''}
     let viewMode = {display:''}
+    const completedStyle = {
+        textDecoration:"line-through",
+        fontStyle: "italic",
+        opacity:0.4
+    }
 
     const handleEditing = ()=>{
         setEditing(true)
@@ -27,8 +32,8 @@ function Todolist({todo, index, completeTodo, deleteTodo, editTodo}){
 
     return (
            <div id="todoitem" className={"card-header row flex-wrap bg-light"} style={{margin:"10px 10px", borderRadius:"10px"}} onDoubleClick={()=>handleEditing()}>
-                <div className={"col"} style={{textDecoration: todo.isCompleted? "line-through":" "}}>
-                    <h5>{todo.text}</h5>
+                <div className={"col"} >
+                    <h5 style={todo.isCompleted?completedStyle:null }>{todo.text}</h5>
                     <input type="text" className={"form-control"} style={editMode} value={todo.text} onKeyDown={editingDone} onChange={(e)=>editTodo(e.target.value, index)}/>
                 </div>
                 <div className={"col"} > 
