@@ -3,14 +3,36 @@ import React, {useState} from 'react'
 //import CreateTodo from './CreateTodo'
 //import Todolist from './Todolist'
 
-function Todolist({todo, index, completeTodo, deleteTodo}){
+function Todolist({todo, index, completeTodo, deleteTodo, editTodo}){
+    const [editing, setEditing] = useState(false)
+
+    let editMode = {display:''}
+    let viewMode = {display:''}
+
+    const handleEditing = ()=>{
+        setEditing(true)
+    }
+
+    const editingDone = (e) =>{
+        if(e.key === 'Enter'){
+            setEditing(false)
+        }
+    }
+
+    if(editing){
+        viewMode.display = 'none'
+    }else{
+        editMode.display = 'none'
+    }
+
     return (
-           <div id="todoitem" className={"card-header row flex-wrap bg-light"} style={{margin:"10px 10px", borderRadius:"10px"}}>
+           <div id="todoitem" className={"card-header row flex-wrap bg-light"} style={{margin:"10px 10px", borderRadius:"10px"}} onDoubleClick={()=>handleEditing()}>
                 <div className={"col"} style={{textDecoration: todo.isCompleted? "line-through":" "}}>
                     <h5>{todo.text}</h5>
+                    <input type="text" className={"form-control"} style={editMode} value={todo.text} onKeyDown={editingDone} onChange={(e)=>editTodo(e.target.value, index)}/>
                 </div>
                 <div className={"col"} > 
-                    <button className={"btn btn-sm btn-success"} onClick={()=>completeTodo(index)}>Complete</button> 
+                    <button className={"btn btn-sm btn-success"} onClick={()=>completeTodo(index)}>Done</button> 
                     <button className={"btn btn-sm btn-danger ml-2"} onClick={()=>deleteTodo(index)}>Del</button>
                 </div>
            </div>
@@ -69,6 +91,12 @@ const Cardbody  = () => {
         setTodos(newTodos)
     }
 
+    const updateTodo = (updatetext, index) => {
+        const newTodos = [...todos]
+        newTodos[index].text = updatetext
+        setTodos(newTodos)
+    }
+
     return(
         <>
             <TodoForm addTodo={addTodo}/>
@@ -78,7 +106,7 @@ const Cardbody  = () => {
                 </div>
                 <div className={"card-body bg-secondary"}>
                     {todos.map((todo, index)=>(
-                        <Todolist todo={todo} key={index} index={index} completeTodo={completeTodo} deleteTodo={deleteTodo}/>
+                        <Todolist todo={todo} key={index} index={index} completeTodo={completeTodo} deleteTodo={deleteTodo} editTodo={updateTodo} />
                     ))}
                 </div>
             </div>
